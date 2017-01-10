@@ -36,6 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
 
     $module_link = base_url() . "home/module/" . $module_number_n;
+
     ?>
 
     <div class="padding-md">
@@ -43,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-12">
                 <div class="module-sec">
                     <div class="col-md-7">
-                        <h3>MODULE # <?php echo $module_number_n." ".$selected_video[0]['video_title']; ?></h3>
+                        <h4>MODULE # <?php echo $selected_video[0]['module_number']." ".$selected_video[0]['video_title']; ?></h4>
 
                         <p class="check-span2"><input type="checkbox" name="uservideo" id="uservideo"
                                                     <?php if(isset($selected_video[0]['video_watched']) && !empty($selected_video[0]['video_watched']) ) echo "checked"; ?>
