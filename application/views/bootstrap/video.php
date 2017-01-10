@@ -45,11 +45,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="module-sec">
                     <div class="col-md-7">
                         <h4>MODULE # <?php echo $selected_video[0]['module_number']." ".$selected_video[0]['video_title']; ?></h4>
-
                         <p class="check-span2"><input type="checkbox" name="uservideo" id="uservideo"
-                                                    <?php if(isset($selected_video[0]['video_watched']) && !empty($selected_video[0]['video_watched']) ) echo "checked"; ?>
-                                                      onclick="UserVideo(<?php echo $userid ?>,<?php echo $moduleid; ?>,
-                                                          '<?php echo $module_link; ?>','<?php echo $video_link; ?>');">
+                            <?php if(isset($selected_video[0]['video_watched']) && !empty($selected_video[0]['video_watched']) ) echo "checked"; ?>
+                              onclick="UserVideo(<?php echo $userid ?>,<?php echo $moduleid; ?>,
+                                  '<?php echo $module_link; ?>','<?php echo $video_link; ?>');">
                             <!--<span class="custom-checkbox"></span>-->
                             <label for="check-box"></label>
                             <span><?php echo "Video # " . $this->uri->segment(4); ?></span></p>
