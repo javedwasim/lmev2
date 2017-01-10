@@ -121,42 +121,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                         </div>
                     <?php } ?>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="buttons-ul">
-                                <li><img src="<?php echo base_url(); ?>img/download-icon.png" class="down-icon">
-                                    PRESENTATION
-                                </li>
-                                <li><img src="<?php echo base_url(); ?>img/download-icon.png" class="down-icon"> CHEAT
-                                    SHEET
-                                </li>
-                                <li><img src="<?php echo base_url(); ?>img/download-icon.png" class="down-icon">
-                                    TRANSCRIPT
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+
                     <?php if (isset($selected_video[0])) : ?>
                         <div class="row">
                             <div class="col-md-12">
                                 <div style="text-align: center">
-                                    <?php if (!empty($selected_video[0]['resource1'])): ?>
-                                        <a href="<?php echo $selected_video[0]['resource1']; ?>" target="_blank"
-                                           class="btn btn-danger quick-btn"><i class="fa fa-envelope"></i><span>Resource 1</span></a>
-                                    <?php endif; ?>
-                                    <?php if (!empty($selected_video[0]['resource2'])): ?>
-                                        <a href="<?php echo $selected_video[0]['resource2']; ?>" target="_blank"
-                                           class="btn btn-success quick-btn"><i
-                                                class="fa fa-music"></i><span>Resource 2</span></a>
-                                    <?php endif; ?>
-                                    <?php if (!empty($selected_video[0]['resource3'])): ?>
-                                        <a href="<?php echo $selected_video[0]['resource3']; ?>" target="_blank"
-                                           class="btn btn-info quick-btn"><i class="fa fa-picture-o"></i><span>Resource 3</span></a>
-                                    <?php endif; ?>
-                                    <?php if (!empty($selected_video[0]['resource4'])): ?>
-                                        <a href="<?php echo $selected_video[0]['resource4']; ?>" target="_blank"
-                                           class="btn btn-warning quick-btn"><i class="fa fa-picture-o"></i><span>Resource 4</span></a>
-                                    <?php endif; ?>
+
+                                    <ul class="buttons-ul">
+                                        <?php if (!empty($selected_video[0]['resource1'])): ?>
+                                            <a href="<?php echo $selected_video[0]['resource1']; ?>" target="_blank">
+                                                <li><img src="<?php echo base_url(); ?>img/download-icon.png" class="down-icon">
+                                                        PRESENTATION</li>
+                                            </a>
+                                        <?php endif; ?>
+                                        <?php if (!empty($selected_video[0]['resource2'])): ?>
+                                            <a href="<?php echo $selected_video[0]['resource2']; ?>" target="_blank">
+                                                <li><img src="<?php echo base_url(); ?>img/download-icon.png" class="down-icon"> CHEAT
+                                                    SHEET
+                                                </li>
+                                            </a>
+                                        <?php endif; ?>
+                                        <?php if (!empty($selected_video[0]['resource3'])): ?>
+                                            <a href="<?php echo $selected_video[0]['resource3']; ?>" target="_blank">
+                                                <li><img src="<?php echo base_url(); ?>img/download-icon.png" class="down-icon">
+                                                    TRANSCRIPT
+                                                </li>
+                                            </a>
+                                        <?php endif; ?>
+                                        <?php if (!empty($selected_video[0]['resource4'])): ?>
+                                            <a href="<?php echo $selected_video[0]['resource4']; ?>" target="_blank">
+                                                <li><img src="<?php echo base_url(); ?>img/download-icon.png" class="down-icon">
+                                                    Resource 4
+                                                </li>
+                                            </a>
+                                        <?php endif; ?>
+                                    </ul>
+
+
                                 </div>
 
                             </div>
