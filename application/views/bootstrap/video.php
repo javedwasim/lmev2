@@ -162,7 +162,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                         </div>
                     <?php endif; ?>
-
                     <div class="row">
                         <div class="col-md-12">
                             <ul class="lesson-ul">
