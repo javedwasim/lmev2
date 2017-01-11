@@ -167,7 +167,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="lesson-ul">
-                                    <h4>Lesson # 1: Time Stamps</h4>
+                                    <h4>Lesson # <?php echo $selected_video[0]['video_number']; ?>: Time Stamps</h4>
                                     <?php foreach($VideoTimeStamp as $vts): ?>
                                         <li><img src="<?php echo base_url(); ?>img/clock-icon.png"
                                                  class="clock"><span><?php echo $vts->time ?></span>&nbsp;-
