@@ -427,7 +427,9 @@ class home extends CI_Controller {
 		$moduleWatchedVideoCount = $this->moduleWatchedVideos($module_number);
 		$moduleProgress = ($moduleWatchedVideoCount/$module_videos_count)*100;
 
-		//print_r($getAllModuleVideos); die();
+		$json = $selectedModuleVideo[0]['video_time_stamp'];
+		$VideoTimeStamp = json_decode($json);
+
 		$userid = $this->session->userdata['logged_in']['id'];
 
 
@@ -449,7 +451,8 @@ class home extends CI_Controller {
 			'user_id'=>$userid,
 			'module_id'=>$module_id,
 			'module_videos'=>$module_videos,
-			'moduleProgress'=>$moduleProgress
+			'moduleProgress'=>$moduleProgress,
+			'VideoTimeStamp'=>$VideoTimeStamp
 
 
 		);

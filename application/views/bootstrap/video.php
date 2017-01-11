@@ -46,9 +46,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-md-7">
                         <h4>MODULE # <?php echo $selected_video[0]['module_number']." ".$selected_video[0]['video_title']; ?></h4>
                         <p class="check-span2"><input type="checkbox" name="uservideo" id="uservideo"
-                            <?php if(isset($selected_video[0]['video_watched']) && !empty($selected_video[0]['video_watched']) ) echo "checked"; ?>
-                              onclick="UserVideo(<?php echo $userid ?>,<?php echo $moduleid; ?>,
-                                  '<?php echo $module_link; ?>','<?php echo $video_link; ?>');">
+                                <?php if(isset($selected_video[0]['video_watched']) && !empty($selected_video[0]['video_watched']) ) echo "checked"; ?>
+                                                      onclick="UserVideo(<?php echo $userid ?>,<?php echo $moduleid; ?>,
+                                                          '<?php echo $module_link; ?>','<?php echo $video_link; ?>');">
                             <!--<span class="custom-checkbox"></span>-->
                             <label for="check-box"></label>
                             <span><?php echo "Video # " . $this->uri->segment(4); ?></span></p>
@@ -131,7 +131,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <?php if (!empty($selected_video[0]['resource1'])): ?>
                                             <a href="<?php echo $selected_video[0]['resource1']; ?>" target="_blank">
                                                 <li><img src="<?php echo base_url(); ?>img/download-icon.png" class="down-icon">
-                                                        PRESENTATION</li>
+                                                    PRESENTATION</li>
                                             </a>
                                         <?php endif; ?>
                                         <?php if (!empty($selected_video[0]['resource2'])): ?>
@@ -163,27 +163,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                         </div>
                     <?php endif; ?>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="lesson-ul">
-                                <h4>Lesson # 1: Time Stamps</h4>
-                                <li><img src="<?php echo base_url(); ?>img/clock-icon.png"
-                                         class="clock"><span>0:34</span> - What is a Niche
-                                </li>
-                                <li><img src="<?php echo base_url(); ?>img/clock-icon.png"
-                                         class="clock"><span>0:34</span> - What is a Niche
-                                </li>
-                                <li><img src="<?php echo base_url(); ?>img/clock-icon.png"
-                                         class="clock"><span>0:34</span> - What is a Niche
-                                </li>
-                            </ul>
+                    <?php if(isset($VideoTimeStamp)): ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="lesson-ul">
+                                    <h4>Lesson # 1: Time Stamps</h4>
+                                    <?php foreach($VideoTimeStamp as $vts): ?>
+                                        <li><img src="<?php echo base_url(); ?>img/clock-icon.png"
+                                                 class="clock"><span><?php echo $vts->time ?></span>&nbsp;-
+                                            <?php echo $vts->description ?>
+                                        </li>
+                                    <?php endforeach; ?>
+
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php endif; ?>
                 <!-- /panel -->
             </div>
         </div>
     </div>
 </div>
-
-<script type="text/javascript">jssor_1_slider_init();</script>

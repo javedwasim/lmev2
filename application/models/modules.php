@@ -60,7 +60,7 @@ class Modules extends My_Model{
     function getSelectedModuleVideo($module_number , $video_numnber){
 
         $data = array();
-        $this->db->select('modules.id,module_number,module_title,video_count,video_number,
+        $this->db->select('modules.id,module_number,module_title,video_count,video_number,video_time_stamp,
         video_title,tags,audio,pdf,video_filename,resource1,resource2,resource3,resource4,uservideos.module_id as video_watched');
         $this->db->join('uservideos', 'modules.id = uservideos.module_id', 'left outer');
         $this->db->where('module_number', $module_number);

@@ -63,30 +63,7 @@ if (@array_key_exists($this->uri->segment(2), $menu_items)) {
                     </a>
                 </li>
             
-                <li class="singel-tab">
-                    <a href="<?php echo base_url() . "home/"; ?>">
 
-						<span class="text sidebar-text">
-							Home
-						</span>
-                    </a>
-                </li>
-                <li class="singel-tab">
-                    <a href="<?php echo base_url() . "businessplan/"; ?>">
-
-						<span class="text sidebar-text singel-tab">
-							Business Plan Creator Tool
-						</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="<?php echo base_url() . "ebook/"; ?>">
-
-						<span class="text sidebar-text singel-tab">
-							E-Book Generator Tool
-						</span>
-                    </a>
-                </li>
                 
                 <?php
                 $this->load->model('modules', '', TRUE);
