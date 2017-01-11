@@ -22,8 +22,8 @@ class Modules extends My_Model{
 
     function getAllModulesVideos($module_numnber){
         $data = array();
-        $this->db->select('modules.id,module_number,module_title,video_count,video_number,video_title,
-        tags,audio,pdf,video_filename,uservideos.module_id as video_watched');
+        $this->db->select('modules.id,module_number,module_title,video_count,video_number,video_title,video_wistia_id,
+                            tags,audio,pdf,video_filename,uservideos.module_id as video_watched');
         $this->db->join('uservideos', 'modules.id = uservideos.module_id', 'left outer');
         $this->db->where('modules.module_number', $module_numnber);
         $this->db->order_by('modules.video_number','asc');

@@ -1,0 +1,2 @@
+ New record created successfully
+Message has been sent

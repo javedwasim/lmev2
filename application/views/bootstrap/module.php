@@ -24,17 +24,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             </div>
 		</div>
-		
-
-		<?php /*?><div class="row" id="heading">
-			<div class="col-md-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<a href = "<?php echo base_url()."home/module/".$module_number; ?>" class="module-color-custom font-16"><?php echo $module_title; ?></a>
-					</div>
-				</div><!-- /panel -->
-			</div>
-		</div><?php */?>
  
 		<div class="row">
 			<div class="col-md-12">
@@ -68,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<div class="panel-body">
 										<a href="#" onclick="UserVideoLink(<?php echo $userid ?>,<?php echo $moduleid; ?>,'<?php echo $video_link; ?>');">
                                         <div class="tutor-img">
-                                        	<img src="<?php echo base_url(); ?>img/tutor-img.png" class="tut-img">
+                                        	<img src="<?php echo $video['video_wistia_id']; ?>" class="tut-img">
                                             
                                         </div>
 
