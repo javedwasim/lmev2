@@ -28,7 +28,7 @@
 
 	//$json = file_get_contents('php://input');
 	//$obj = json_decode($json);
-	$postdata = '{"CFName": "javed","CLName": "wasim","CEmail":"javed@javed.com"}';
+	$postdata = '{"CFName": "javed","CLName": "wasim","CEmail":"javedafaq@gmail.com"}';
 
 	$obj = json_decode($postdata);
 	$firstName = $obj->CFName;
@@ -36,12 +36,25 @@
 	$email = $obj->CEmail;
 	$fullName = $firstName." ".$lastName;
 
+	$sQuery = "select * from users where email= '$email'";
+	$result = $conn->query($sQuery);
+	$rowcount=mysqli_num_rows($result);
+
+	if($rowcount>0){
+
+		$error.="email already exist";
+		// Write the contents back to the file
+		file_put_contents($file, $error." ".$msg);
+		die();
+
+	}
+
+	//print_r($rowcount=mysqli_num_rows($result));
+	//die();
+
 	$randomPassword = randomPassword();
 	$randPwd = md5($randomPassword);
 	$createddate = date("Y-m-d h:i:s");
-
-
-
 
 	$query  = 'INSERT INTO `users`(`email`, `username`, `password`, `created_date`, `is_active`,`full_name`,`image`,`about`) VALUES ("'.$email.'","'.$email.'","'.$randPwd.'","'.$createddate.'",1,"'.$fullName.'","","")';
 
@@ -49,7 +62,6 @@
 		$msg .= "New record created successfully".PHP_EOL;
 	} else {
 		$error .=  "Error: " . $sql . "<br>" . $conn->error.PHP_EOL;
-
 
 	}
 
@@ -61,25 +73,28 @@
 
 	include("imail/PHPMailer-master/PHPMailerAutoload.php");
 
-	$mail = new PHPMailer(true);
+		try{
 
-	//Send mail using gmail
-	$mail->IsSMTP(); // telling the class to use SMTP
-	$mail->SMTPAuth = true; // enable SMTP authentication
-	//$mail->SMTPSecure = "tls"; // sets the prefix to the servier
-	$mail->Host = "mail.launchmyempire.com"; // sets GMAIL as the SMTP server
-	$mail->Port = 25; // set the SMTP port for the GMAIL server
-	$mail->Username = "noreply@launchmyempire.com"; // GMAIL username
-	$mail->Password = "NOreply@789"; // GMAIL password @@WELCOME@@777@@tds
-	//$mail->SMTPSecure = "ssl";
+			$mail = new PHPMailer(true);
 
-	//Typical mail data
-	$mail->AddReplyTo('info@launchmyempire.com',"Launch My Empire");
-	$mail->AddAddress($email);
-	$mail->SetFrom('info@launchmyempire.com', 'Launch My Empire');
-	$mail->Subject = "Launch My Empire - Members Area Access";
+			//Send mail using gmail
+			$mail->IsSMTP(); // telling the class to use SMTP
+			$mail->SMTPAuth = true; // enable SMTP authentication
+			//$mail->SMTPSecure = "tls"; // sets the prefix to the servier
+			$mail->Host = "smtp.gmail.com"; // sets GMAIL as the SMTP server
+			$mail->Port = 465; // set the SMTP port for the GMAIL server
+			$mail->Username = "javedafaq@gmail.com"; // GMAIL username
+			$mail->Password = "polkmn-manjum"; // GMAIL password @@WELCOME@@777@@tds
+			$mail->SMTPSecure = "ssl";
 
-	$messageBody =  '
+			//Typical mail data
+			$mail->AddReplyTo('javedafaq@gmail.com',"Javed Wasim");
+			$mail->AddAddress($email);
+			$mail->SetFrom('javedafaq@gmail.com', 'Javed Wasim');
+			$mail->Subject = "Registration Successful";
+			//echo $_POST['subject'];
+
+			$messageBody =  '
 						Dear '.$firstName.' '.$lastName.',
 						<br/><br/>
 						Thank you for your purchase of Launch My Empire and welcome to the family.
@@ -100,14 +115,27 @@
 						<br/>
 						Launch My Empire Support
 						';
-		$mail->MsgHTML($messageBody);
 
-		if(!$mail->send()) {
-			$error.= 'Message could not be sent.'.PHP_EOL;
-			$error.= 'Mailer Error: ' . $mail->ErrorInfo.PHP_EOL;
-		} else {
-			$msg.= 'Message has been sent'.PHP_EOL;
+			$mail->MsgHTML($messageBody);
+
+			if(!$mail->send()) {
+				//echo 'Message could not be sent.';
+				$error.= 'Mailer Error: ' . $mail->ErrorInfo.PHP_EOL;
+			}else{
+				$msg.= 'email sent successfully'.PHP_EOL;
+			}
+
+		}catch (phpmailerException $e) {
+			$error.= $e->errorMessage().PHP_EOL; //Pretty error messages from PHPMailer
+
+
+		}catch (Exception $e) {
+			$error.= $e->errorMessage().PHP_EOL; //Pretty error messages from PHPMailer
+
 		}
+
+
+
 
 	}
 

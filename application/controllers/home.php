@@ -344,6 +344,7 @@ class home extends CI_Controller {
 
 		$this->load->helper('html');
 		$this->load->view('bootstrap/header',$data);
+		$this->load->view('bootstrap/asidebar',$data);
 		$this->load->view('bootstrap/profile',$user_detail);
 		$this->load->view('bootstrap/footer');
 
