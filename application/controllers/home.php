@@ -19,7 +19,7 @@ class home extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	
+
 	public $userid;
          
     function __construct() {
